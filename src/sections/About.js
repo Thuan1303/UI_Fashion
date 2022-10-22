@@ -1,11 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 
+import img1 from "../assets/Images/1.webp";
+import img2 from "../assets/Images/2.webp";
+import img3 from "../assets/Images/3.webp";
 const Section = styled.section`
   position: relative;
-  min-height: 100vh;
-  overflow: hidden;
+  min-height: 200vh;
+  width: 80vw;
   display: flex;
+  margin: 0 auto;
 `;
 
 const Title = styled.h1`
@@ -27,10 +31,29 @@ const Left = styled.div`
 `;
 const Right = styled.div`
   width: 50%;
+  height: 100vh;
+  position: relative;
+  img {
+    width: 100%;
+    height: auto;
+  }
+  .small-img-1 {
+    width: 40%;
+    position: absolute;
+    right: 95%;
+    bottom: 10%;
+  }
+  .small-img-2 {
+    width: 40%;
+    position: absolute;
+    left: 80%;
+    bottom: 30%;
+  }
 `;
+
 const About = () => {
   return (
-    <Section>
+    <Section id="fixed-target">
       <Title
         data-scroll
         data-scroll-speed="-2"
@@ -38,7 +61,7 @@ const About = () => {
       >
         About US
       </Title>
-      <Left>
+      <Left data-scroll data-scroll-sticky data-scroll-target="#fixed-target">
         We're fashion studio based in california. We create unique designs that
         will blow your mind. We also design unique jewellary pieces. Fashion is
         an ART that can not be grasped by everyone.
@@ -54,7 +77,25 @@ const About = () => {
         create amazing experiences for all people. We are always looking to make
         something that is easy for everyone.
       </Left>
-      <Right>Images</Right>
+      <Right>
+        <img src={img1} alt="About us" srcset="" />
+        <img
+          data-scroll
+          data-scroll-speed="5"
+          src={img2}
+          className="small-img-1"
+          alt="About us"
+          srcset=""
+        />
+        <img
+          data-scroll
+          data-scroll-speed="-2"
+          src={img3}
+          className="small-img-2"
+          alt="About us"
+          srcset=""
+        />
+      </Right>
     </Section>
   );
 };
